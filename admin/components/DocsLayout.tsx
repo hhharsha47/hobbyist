@@ -1,14 +1,17 @@
 import Header from "./Header";
 import TOC from "./TOC";
+import { getSearchIndex } from "@/lib/search";
 
 export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const searchIndex = getSearchIndex();
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header index={searchIndex} />
       <div className="container mx-auto flex max-w-7xl items-start gap-10 px-4 py-10">
         {/* Sidebar Navigation (Left) - Could be a list of pages if we had more */}
         <aside className="hidden w-64 shrink-0 lg:block sticky top-24">
