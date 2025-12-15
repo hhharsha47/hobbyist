@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Hobbyist Decals Documentation",
   description: "User Guide and Documentation for Hobbyist Decals",
   icons: {
-    icon: "/logo.png",
+    icon: "/meow.png",
   },
 };
 
