@@ -21,19 +21,30 @@ export function getSearchIndex(): SearchIndexItem[] {
     const fileContent = fs.readFileSync(filePath, "utf8");
     const { content } = matter(fileContent);
 
+    // Track occurrences of IDs within this file to handle duplicates
+    const idCounts: Record<string, number> = {};
+
     // Simple regex to find headings and associate content
-    // This looks for # Heading text, and grabs following text until next heading
     const sections = content.split(/(?=^#{2,3}\s)/m);
 
     sections.forEach((section) => {
       const match = section.match(/^(#{2,3})\s+(.*)$/m);
       if (match) {
         const title = match[2].trim();
-        // Create an ID from the title (slugify)
-        const id = title
+        // Create an ID that matches rehype-slug (github-slugger) behavior
+        let id = title
           .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/(^-|-$)+/g, "");
+          .replace(/[^a-z0-9\s-]/g, "") 
+          .trim()
+          .replace(/\s+/g, "-");
+
+        // Handle duplicates
+        if (idCounts[id]) {
+          idCounts[id]++;
+          id = `${id}-${idCounts[id] - 1}`;
+        } else {
+          idCounts[id] = 1;
+        }
         
         // Remove the heading from the content for indexing
         const sectionContent = section.replace(/^(#{2,3})\s+(.*)$/m, "").trim();

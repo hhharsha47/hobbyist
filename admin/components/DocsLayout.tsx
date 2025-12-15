@@ -16,12 +16,14 @@ export default function DocsLayout({
         {/* Sidebar Navigation (Left) - Could be a list of pages if we had more */}
         <aside className="hidden w-64 shrink-0 lg:block sticky top-24">
           <div className="space-y-4">
-            <h3 className="font-bold text-gray-900">Documentation</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <h3 className="px-3 font-semibold text-xs uppercase tracking-wider text-gray-500 mb-2">
+              Documentation
+            </h3>
+            <ul className="space-y-1">
               <li>
                 <a
                   href="/docs/admin"
-                  className="block rounded-md bg-transparent px-3 py-2 text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium transition-colors"
+                  className="block rounded-md bg-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
                 >
                   Admin Guide
                 </a>

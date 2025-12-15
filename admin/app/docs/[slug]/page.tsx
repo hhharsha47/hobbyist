@@ -35,6 +35,14 @@ export default async function DocPage({
   return (
     <DocsLayout>
       <div className="prose prose-blue max-w-none prose-headings:scroll-mt-28 prose-a:no-underline hover:prose-a:underline">
+        <div className="mb-8">
+          <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900">
+            {data.title}
+          </h1>
+          {data.description && (
+            <p className="text-xl text-gray-500">{data.description}</p>
+          )}
+        </div>
         <MDXRemote
           source={content}
           options={{

@@ -17,15 +17,18 @@ export default function Header({ index }: { index: SearchIndexItem[] }) {
           <div className="flex items-center gap-2">
             <Link
               href="/"
-              className="flex items-center gap-2 text-xl font-bold text-blue-600"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
-              {/* <Book className="h-6 w-6" /> */}
               <img
                 src="/logo.jpeg"
                 alt="Hobbyist Logo"
-                className="h-8 w-auto rounded-md"
+                className="h-10 w-auto object-contain"
+                style={{ maxWidth: "150px" }}
               />
-              <span>Hobbyist Docs</span>
+              <div className="h-6 w-px bg-gray-300 hidden sm:block"></div>
+              <span className="text-xl font-semibold text-gray-700 hidden sm:block">
+                Documentation
+              </span>
             </Link>
           </div>
 
