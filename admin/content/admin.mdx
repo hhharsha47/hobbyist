@@ -234,6 +234,130 @@ Clicking **View Details** on any shipment opens a granular view.
 
 ---
 
+## Manual Shipping
+
+The **Manual Shipping** module (`/admin-dashboard/manual-shipping`) gives you granular control over non-integrated logistics, allowing you to manage shipments and rates manually.
+
+### 1. Dashboard
+
+The **All Manual Shipments** dashboard is the central hub for tracking manual orders (`/admin-dashboard/manual-shipping/list`).
+
+- **Filters**:
+
+  - **Search**: By Order Code or Tracking Number.
+  - **Status**: Filter by specific stages like `Order Placed`, `In Design`, `Processed`, `Shipped`, etc.
+  - **Date**: View shipments within a specific `Start Date` and `End Date`.
+
+- **Shipment List**:
+  - **Order Code**: Unique identifier.
+  - **Customer**: Name and email.
+  - **Destination**: Area settings and Country.
+  - **Status**: Visual badges for Payment (e.g., `Paid`) and Order Status.
+  - **Tracking**: Shows assigned tracking number or "Not assigned".
+  - **Shipping Cost**: The calculated cost for the shipment.
+
+### 2. Manage Rates
+
+Configure your shipping bands and costs in the **Shipping Rates** section (`/admin-dashboard/manual-shipping/rates`).
+
+#### Overview
+
+- **Search**: Find rates by Country or Location name.
+- **Filters**: Refine by **Location**, **Location Type**, or **Status**.
+- **Actions**:
+  - **Add Rate**: Manually create a new weight-based rate.
+  - **Bulk Tools**: `Download Template` and `Upload Excel` for mass updates.
+
+#### Rate Table
+
+View all active and inactive rates with details:
+
+- **Location**: The zone or country (e.g., "Africa zone").
+- **Weight Band**: The defining weight range (e.g., `0.05 kg`).
+- **Rate (INR)**: The shipping cost.
+- **Validity**: `Effective From` date.
+- **Version**: Grouping tag (e.g., `Band C`).
+
+#### Add/Edit Rate
+
+When you add or edit a rate, you can specify:
+
+- **Location & Weight**: Select the zone and weight tier.
+- **Rate**: Enter the cost in INR.
+- **Validity**: Set start and end dates (`Effective From/To`).
+- **Version**: Assign to a specific Rate Card Version.
+- **Notes**: Internal comments.
+- **Active**: Toggle availability.
+
+### 3. Rate Card Versions
+
+Organize your shipping rates into versioned sets using the **Rate Card Versions** page (`/admin-dashboard/manual-shipping/rate-card-versions`). This allows you to manage different pricing structures (e.g., "Holiday Rates" vs "Standard Rates") and switch between them.
+
+#### Manage Versions
+
+- **List View**: Displays all created versions with their **Effective Period** and **Rates Count**.
+- **Actions**: Edit details or delete a version.
+
+#### Add New Version
+
+Click **+ Add Version** to create a container for your rates:
+
+1.  **Version Name**: Unique identifier (e.g., `Band-C wef 10.02.2025`).
+2.  **Description**: Optional context.
+3.  **Effective Period**: Set the `From` and `To` dates. Leave "To" empty for ongoing validity.
+4.  **Active**: **Important**: Create new versions as **Inactive** initially. Only activate them after you have uploaded the corresponding rates.
+
+### 4. Country-Zone Management
+
+The **Country-Zone Management** section (`/admin-dashboard/manual-shipping/countries`) is where you define the geographical logic for your rates.
+
+#### Overview
+
+- **Excel Upload**: Use the **Download Template** and **Upload Excel** buttons to bulk-import country-zone mappings.
+  - **Required Columns**: `Country`, `Zone`.
+  - **Optional**: `Country Code` (ISO 2-letter).
+  - _Example_: Map "United States" to "Latin America" zone, "Australia" to "Asia".
+
+#### List View
+
+View the current mappings:
+
+- **Columns**: Country, Code (e.g., `DZ`), Zone (e.g., `Africa`), and the count of active Rates for that zone.
+- **Search & Filters**: Find specific countries or filter by Zone to check coverage.
+
+### 5. Manage Locations
+
+The **Locations** module (`/admin-dashboard/manual-shipping/locations`) handles the granular hierarchy of your shipping destinations.
+
+#### Overview
+
+- **Location Types**: Organize by structure (e.g., `Country` inside `Continent` inside `World`).
+- **Filters**:
+  - **Fallback**: Filter locations marked as "Fallback" (used when no specific rate is found).
+  - **Status** and **Location Type**.
+
+#### Add Location
+
+- **Details**: Name, ISO Code, and Parent Location.
+- **Fallback**: Check the **Mark as Fallback Location** box if this location should serve as a default for its parent region.
+
+### 6. Exchange Rate Management
+
+Control currency conversions (`/admin-dashboard/manual-shipping/exchange-rate`) to ensure accurate USD-to-INR shipping calculations.
+
+#### Components
+
+1.  **Default Fallback**: A mandatory safety net rate used if no specific date-matched rate exists. This cannot be deactivated.
+2.  **Current Rate**: The large display shows the active rate for today (e.g., `1 USD = 100.00 INR`).
+3.  **Add Rate**:
+    - **Source**: Select `Bank Rate` or `Manual Entry`.
+    - **Validity**: Set `Effective From` and optional `Effective To` dates.
+4.  **Rate History**:
+    - Manage past and future rates.
+    - **Actions**: `Set Default` (make this the fallback), `Edit`, or `Disable`.
+
+---
+
 ## Customers
 
 The **Customer Management** module (`/admin-dashboard/customers`) provides deep insights into your user base and their loyalty status.

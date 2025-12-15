@@ -34,6 +34,7 @@ export default function TOC() {
     { id: "categories", label: "Categories" },
     { id: "orders", label: "Orders" },
     { id: "shipments", label: "Shipments" },
+    { id: "manual-shipping", label: "Manual Shipping" },
     { id: "customers", label: "Customers" },
     { id: "payments--transactions", label: "Payments & Transactions" },
     { id: "analytics", label: "Analytics" },
