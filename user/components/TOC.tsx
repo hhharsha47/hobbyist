@@ -11,9 +11,7 @@ export default function TOC() {
 
   useEffect(() => {
     // Dynamic TOC generation
-    // Wait for a tick to ensure the DOM is ready if needed,
-    // but typically scanning in useEffect on mount works if content is static-ish
-    const elements = Array.from(document.querySelectorAll("h2, h3"));
+    const elements = Array.from(document.querySelectorAll("h2, h3, h4"));
     const tocItems = elements
       .map((elem) => ({
         id: elem.id,
@@ -54,7 +52,11 @@ export default function TOC() {
             <Link
               href={`#${heading.id}`}
               className={`block py-1 -ml-px border-l-2 transition-all duration-200 ${
-                heading.level === 3 ? "pl-8 text-xs" : "pl-4 text-sm"
+                heading.level === 3
+                  ? "pl-8 text-xs"
+                  : heading.level === 4
+                  ? "pl-12 text-xs text-gray-400"
+                  : "pl-4 text-sm"
               } ${
                 activeId === heading.id
                   ? "border-blue-600 text-blue-600 font-medium"

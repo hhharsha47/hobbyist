@@ -23,7 +23,7 @@ export default function DocsLayout({
               <li>
                 <a
                   href="/docs/admin"
-                  className="block rounded-md bg-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                  className="block rounded-md bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-colors"
                 >
                   Admin Guide
                 </a>
