@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Hobbyist Decals Documentation",
   description: "User Guide and Documentation for Hobbyist Decals",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
